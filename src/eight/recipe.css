@@ -1,0 +1,40 @@
+/* src/eight/recipe.css */
+.recipe-catalog-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.recipes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.recipe {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    width: 200px;
+    text-align: center;
+}
+
+.recipe-detail {
+    max-width: 600px;
+    margin: auto;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.recipe-detail h1 {
+    margin-bottom: 10px;
+}
+
+.recipe-detail ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.recipe-detail li {
+    margin: 5px 0;
+}

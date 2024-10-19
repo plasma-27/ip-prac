@@ -1,0 +1,37 @@
+/* src/nine/bill.css */
+.bill-calculator-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.item-input {
+    margin-bottom: 10px;
+}
+
+.item-input input {
+    margin-right: 10px;
+    padding: 5px;
+}
+
+button {
+    margin-right: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+h2 {
+    margin-top: 20px;
+}
+
+h3 {
+    margin-top: 30px;
+}
+
+.item-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.item-list li {
+    margin: 5px 0;
+}

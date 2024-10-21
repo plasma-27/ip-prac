@@ -31,6 +31,20 @@ const courses = [
         description: 'Understand the basics of Node.js and how to build scalable applications.',
         duration: '5 weeks',
         instructor: 'Alice Johnson'
+    },
+    {
+        id: 1,
+        title: 'Introduction to JavaScript',
+        description: 'Learn the fundamentals of JavaScript, the most popular programming language.',
+        duration: '4 weeks',
+        instructor: 'John Doe'
+    },
+    {
+        id: 1,
+        title: 'Introduction to JavaScript',
+        description: 'Learn the fundamentals of JavaScript, the most popular programming language.',
+        duration: '4 weeks',
+        instructor: 'John Doe'
     }
 ];
 

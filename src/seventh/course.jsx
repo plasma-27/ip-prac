@@ -46,51 +46,56 @@ const CourseCatalog = () => {
     };
 
     return (
-        <div className="course-catalog-container">
-            <h1>Online Course Catalog</h1>
-
-            <div className="courses">
-                {courses.map((course) => (
-                    <div key={course.id} className="course">
-                        <h2>{course.title}</h2>
-                        <p>{course.description}</p>
-                        <p><strong>Duration:</strong> {course.duration}</p>
-                        <p><strong>Instructor:</strong> {course.instructor}</p>
-                    </div>
-                ))}
+        <>
+            <div className="course-catalog-container">
+                <h1>Online Course Catalog</h1>
+    
+                <div className="courses">
+                    {courses.map((course) => (
+                        <div key={course.id} className="course">
+                            <h2>{course.title}</h2>
+                            <p>{course.description}</p>
+                            <p><strong>Duration:</strong> {course.duration}</p>
+                            <p><strong>Instructor:</strong> {course.instructor}</p>
+                        </div>
+                    ))}
+                </div>
+            </div> {/* Closing course-catalog-container here */}
+    
+            <div className="contact-form-container"> {/* New wrapper for the contact form */}
+                <h2><span>Contact Us</span></h2>
+                <form onSubmit={handleSubmit} className="contact-form">
+                    <input
+                        type="text"
+                        name="name"
+                        value={inquiry.name}
+                        onChange={handleChange}
+                        placeholder="Your Name"
+                        required
+                    />
+                    <input
+                        type="email"
+                        name="email"
+                        value={inquiry.email}
+                        onChange={handleChange}
+                        placeholder="Your Email"
+                        required
+                    />
+                    <textarea
+                        name="message"
+                        value={inquiry.message}
+                        onChange={handleChange}
+                        placeholder="Your Message"
+                        required
+                    />
+                    <button type="submit">Send Inquiry</button>
+                </form>
+    
+                {responseMessage && <p className="response-message">{responseMessage}</p>}
             </div>
-
-            <h2>Contact Us</h2>
-            <form onSubmit={handleSubmit} className="contact-form">
-                <input
-                    type="text"
-                    name="name"
-                    value={inquiry.name}
-                    onChange={handleChange}
-                    placeholder="Your Name"
-                    required
-                />
-                <input
-                    type="email"
-                    name="email"
-                    value={inquiry.email}
-                    onChange={handleChange}
-                    placeholder="Your Email"
-                    required
-                />
-                <textarea
-                    name="message"
-                    value={inquiry.message}
-                    onChange={handleChange}
-                    placeholder="Your Message"
-                    required
-                />
-                <button type="submit">Send Inquiry</button>
-            </form>
-
-            {responseMessage && <p className="response-message">{responseMessage}</p>}
-        </div>
+        </>
     );
+    
 };
 
 export default CourseCatalog;

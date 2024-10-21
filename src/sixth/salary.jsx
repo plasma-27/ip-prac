@@ -4,6 +4,7 @@ import './salary.css';
 
 const SalaryEstimator = () => {
     const [basicSalary, setBasicSalary] = useState('');
+    const [deductionPercentage, setDeductionPercentage] = useState('');
     const [netSalary, setNetSalary] = useState(null);
     const [error, setError] = useState('');
 
@@ -14,8 +15,15 @@ const SalaryEstimator = () => {
 
         // Validate input
         const salaryNumber = parseFloat(basicSalary);
+        const deductionNumber = parseFloat(deductionPercentage);
+        
         if (isNaN(salaryNumber) || salaryNumber < 0) {
             setError('Please enter a valid salary amount.');
+            return;
+        }
+
+        if (isNaN(deductionNumber) || deductionNumber < 0 || deductionNumber >= 99) {
+            setError('Please enter a valid deduction percentage (0-99%).');
             return;
         }
 
@@ -23,7 +31,7 @@ const SalaryEstimator = () => {
         fetch('http://localhost:5001/api/salary/calculate', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ basicSalary: salaryNumber }),
+            body: JSON.stringify({ basicSalary: salaryNumber, deductionPercentage: deductionNumber }),
         })
             .then((response) => {
                 if (!response.ok) {
@@ -52,6 +60,13 @@ const SalaryEstimator = () => {
                     placeholder="Enter your basic salary"
                     required
                 />
+                <input
+                    type="number"
+                    value={deductionPercentage}
+                    onChange={(e) => setDeductionPercentage(e.target.value)}
+                    placeholder="Enter deduction percentage (%)"
+                    required
+                />
                 <button type="submit">Calculate Net Salary</button>
             </form>
 
@@ -59,7 +74,7 @@ const SalaryEstimator = () => {
 
             {netSalary !== null && (
                 <div className="result">
-                    <h2>Estimated Net Salary: ${netSalary.toFixed(2)}</h2>
+                    <h2>Estimated Net Salary: ₹{netSalary.toFixed(2)}</h2>
                 </div>
             )}
         </div>

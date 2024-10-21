@@ -1,19 +1,10 @@
-// src/nine/bill.jsx
 import React, { useState } from 'react';
 import './bill.css';
 
 const BillCalculator = () => {
-    const [items, setItems] = useState([{ name: '', quantity: 1 }]);
+    const [items, setItems] = useState([{ name: '', quantity: 1, price: '' }]);
     const [totalCost, setTotalCost] = useState(0);
-
-    // Sample item prices
-    const itemPrices = {
-        apple: 1.0,
-        banana: 0.5,
-        orange: 0.75,
-        milk: 1.5,
-        bread: 2.0,
-    };
+    const [summaryItems, setSummaryItems] = useState([]); // New state for summary
 
     const handleItemChange = (index, event) => {
         const { name, value } = event.target;
@@ -23,7 +14,16 @@ const BillCalculator = () => {
     };
 
     const addItem = () => {
-        setItems([...items, { name: '', quantity: 1 }]);
+        const lastItem = items[items.length - 1];
+        // Check if any field of the last item is empty
+        if (!lastItem.name || !lastItem.quantity || !lastItem.price) {
+            alert('Please fill in all fields before adding a new item.');
+            return; // Prevent adding a new item
+        }
+        
+        // Update the summaryItems when a new item is added
+        setSummaryItems([...summaryItems, lastItem]);
+        setItems([...items, { name: '', quantity: 1, price: '' }]);
     };
 
     const calculateTotal = async (event) => {
@@ -62,18 +62,30 @@ const BillCalculator = () => {
                             min="1"
                             required
                         />
+                        <input
+                            type="number"
+                            name="price"
+                            placeholder="Item Price"
+                            value={item.price}
+                            onChange={(event) => handleItemChange(index, event)}
+                            min="0"
+                            step="0.01"
+                            required
+                        />
                     </div>
                 ))}
-                <button type="button" onClick={addItem}>Add Item</button>
-                <button type="submit">Calculate Total</button>
+                <div style={{ textAlign: 'center' }}>
+                    <button type="button" onClick={addItem}>Add Item</button>
+                    <button type="submit">Calculate Total</button>
+                </div>
             </form>
-            <h2>Total Cost: ${totalCost.toFixed(2)}</h2>
-
-            <h3>Available Items with Prices:</h3>
-            <ul className="item-list">
-                {Object.entries(itemPrices).map(([itemName, price]) => (
-                    <li key={itemName}>
-                        {itemName.charAt(0).toUpperCase() + itemName.slice(1)}: ${price.toFixed(2)}
+            <h2>Total Cost: ₹{totalCost.toFixed(2)}</h2>
+    
+            <h3>Summary of Items Added:</h3>
+            <ul className="summary-list">
+                {summaryItems.map((item, index) => (
+                    <li key={index}>
+                        {item.name.charAt(0).toUpperCase() + item.name.slice(1)} - Quantity: {item.quantity} - Price: ₹{(parseFloat(item.price) || 0).toFixed(2)}
                     </li>
                 ))}
             </ul>

@@ -63,7 +63,7 @@ app.post('/api/quiz/submit', (req, res) => {
     res.json({ score });
 });
 
-// // Start server
-// app.listen(port, () => {
-//     console.log(`Quiz server running on http://localhost:${port}`);
-// });
+// Start server
+app.listen(port, () => {
+    console.log(`Quiz server running on http://localhost:${port}`);
+});

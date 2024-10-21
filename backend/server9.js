@@ -10,22 +10,14 @@ const PORT = 5003;
 app.use(cors());
 app.use(bodyParser.json()); // To parse JSON request bodies
 
-// Sample prices for items
-const itemPrices = {
-    apple: 1.0,
-    banana: 0.5,
-    orange: 0.75,
-    milk: 1.5,
-    bread: 2.0,
-};
-
 // Calculate total cost based on item data
 app.post('/api/calculate', (req, res) => {
-    const items = req.body.items; // Expecting an array of { name, quantity }
+    const items = req.body.items; // Expecting an array of { name, quantity, price }
     let totalCost = 0;
 
     items.forEach(item => {
-        const price = itemPrices[item.name.toLowerCase()] || 0; // Default to 0 if item is not found
+        // Use the price provided by the user
+        const price = parseFloat(item.price) || 0; // Default to 0 if price is not provided
         totalCost += price * item.quantity;
     });
 

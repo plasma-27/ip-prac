@@ -14,19 +14,22 @@ const recipes = [
         id: 1,
         title: 'Spaghetti Carbonara',
         ingredients: ['spaghetti', 'eggs', 'parmesan cheese', 'pancetta', 'black pepper'],
-        instructions: 'Cook spaghetti. In a bowl, beat eggs and mix with cheese. Fry pancetta. Combine all with pepper.'
+        instructions: 'Cook spaghetti. In a bowl, beat eggs and mix with cheese. Fry pancetta. Combine all with pepper.',
+        timeToMake: '30 minutes' // Added time to make
     },
     {
         id: 2,
         title: 'Chicken Curry',
         ingredients: ['chicken', 'curry powder', 'coconut milk', 'onion', 'garlic'],
-        instructions: 'Sauté onion and garlic. Add chicken and cook. Stir in curry powder and coconut milk.'
+        instructions: 'Sauté onion and garlic. Add chicken and cook. Stir in curry powder and coconut milk.',
+        timeToMake: '45 minutes' // Added time to make
     },
     {
         id: 3,
         title: 'Caesar Salad',
         ingredients: ['romaine lettuce', 'croutons', 'parmesan cheese', 'Caesar dressing'],
-        instructions: 'Chop lettuce. Toss with croutons and Caesar dressing. Top with parmesan cheese.'
+        instructions: 'Chop lettuce. Toss with croutons and Caesar dressing. Top with parmesan cheese.',
+        timeToMake: '15 minutes' // Added time to make
     }
 ];
 

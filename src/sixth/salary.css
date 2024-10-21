@@ -1,7 +1,16 @@
 /* src/sixth/salary.css */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Make the body take the full height of the viewport */
+    margin: 0; /* Remove default margin */
+    background-color: #f0f0f0; /* Optional: set a background color for the body */
+}
+
 .salary-estimator-container {
     max-width: 400px;
-    margin: 0 auto;
+    width: 100%; /* Allow the container to be responsive */
     padding: 20px;
     background-color: #f9f9f9;
     border: 1px solid #ccc;

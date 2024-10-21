@@ -1,4 +1,3 @@
-// src/ten/interest.jsx
 import React, { useState } from 'react';
 import './interest.css';
 
@@ -24,40 +23,42 @@ const InterestCalculator = () => {
 
     return (
         <div className="interest-calculator-container">
-            <h1>Savings Interest Calculator</h1>
-            <form onSubmit={calculateInterest}>
-                <div>
-                    <input
-                        type="number"
-                        placeholder="Principal Amount ($)"
-                        value={principal}
-                        onChange={(e) => setPrincipal(e.target.value)}
-                        required
-                    />
-                </div>
-                <div>
-                    <input
-                        type="number"
-                        placeholder="Rate of Interest (%)"
-                        value={rate}
-                        onChange={(e) => setRate(e.target.value)}
-                        required
-                    />
-                </div>
-                <div>
-                    <input
-                        type="number"
-                        placeholder="Investment Period (Years)"
-                        value={time}
-                        onChange={(e) => setTime(e.target.value)}
-                        required
-                    />
-                </div>
-                <button type="submit">Calculate Interest</button>
-            </form>
-            {interest !== null && (
-                <h2>Interest Earned: ${interest.toFixed(2)}</h2>
-            )}
+            <div className="calculator-box">
+                <h1>Savings Interest Calculator</h1>
+                <form onSubmit={calculateInterest}>
+                    <div>
+                        <input
+                            type="number"
+                            placeholder="Principal Amount"
+                            value={principal}
+                            onChange={(e) => setPrincipal(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <input
+                            type="number"
+                            placeholder="Rate of Interest (%)"
+                            value={rate}
+                            onChange={(e) => setRate(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <input
+                            type="number"
+                            placeholder="Investment Period (Years)"
+                            value={time}
+                            onChange={(e) => setTime(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <button type="submit">Calculate Interest</button>
+                </form>
+                {interest !== null && (
+                    <h2>Interest Earned: {interest.toFixed(2)}</h2>
+                )}
+            </div>
         </div>
     );
 };

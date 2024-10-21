@@ -1,39 +1,40 @@
 const express = require('express');
 const cors = require('cors');
-const bodyParser = require('body-parser');
 
 const app = express();
-const port = 5000;
+const PORT = 5000;
 
-// Middleware
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
 
-// Dummy articles
 const articles = [
-  { id: 1, title: 'Choosing the Right Career Path', content: 'Exploring career paths...' },
-  { id: 2, title: 'Skills for Success in 2024', content: 'Top skills for a successful career...' },
-  { id: 3, title: 'Career Change Tips', content: 'How to navigate a career change...' }
+    {
+        title: 'Choosing the Right Career Path',
+        content: 'This article will help you choose the right career path based on your strengths and interests...',
+    },
+    {
+        title: 'How to Ace a Job Interview',
+        content: 'Learn tips and strategies to perform well in job interviews...',
+    },
+    {
+        title: 'Balancing Work and Life',
+        content: 'Find out how to maintain a healthy work-life balance in today’s fast-paced world...',
+    },
 ];
 
-// API route to get articles
+// Get articles
 app.get('/api/articles', (req, res) => {
-  res.json(articles);
+    res.json(articles);
 });
 
-// API route to handle inquiries
-app.post('/api/inquiries', (req, res) => {
-  const { name, email, message } = req.body;
-
-  if (!name || !email || !message) {
-    return res.status(400).json({ error: 'All fields are required.' });
-  }
-
-  console.log('Inquiry received:', { name, email, message });
-  res.status(200).json({ message: 'Inquiry submitted successfully!' });
+// Post inquiries
+app.post('/api/contact', (req, res) => {
+    const { name, email, message } = req.body;
+    // Capture inquiry and send response
+    console.log(`Inquiry received: ${name}, ${email}, ${message}`);
+    res.json({ success: true });
 });
 
-// Start server
-app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
+app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
 });

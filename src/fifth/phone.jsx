@@ -37,6 +37,11 @@ const PhoneDirectory = () => {
             .catch((error) => console.error('Error adding contact:', error));
     };
 
+    const formatPhoneNumber = (phone) => {
+        // Assuming the first 3 digits are the country code
+        return `${phone.slice(0, 3)} ${phone.slice(3)}`;
+    };
+
     return (
         <div className="phone-directory-container">
             <h1>Personal Phone Directory</h1>
@@ -62,13 +67,14 @@ const PhoneDirectory = () => {
             </form>
 
             <h2>Contacts List</h2>
-            <ul className="contacts-list">
+            <div className="contacts-list">
                 {contacts.map((contact, index) => (
-                    <li key={index}>
-                        {contact.name} - {contact.phone}
-                    </li>
+                    <div key={index} className="contact-card">
+                        <div className="contact-name">{contact.name}</div>
+                        <div className="contact-phone">{formatPhoneNumber(contact.phone)}</div>
+                    </div>
                 ))}
-            </ul>
+            </div>
         </div>
     );
 };

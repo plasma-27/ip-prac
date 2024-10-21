@@ -1,37 +1,39 @@
-/* src/nine/bill.css */
 .bill-calculator-container {
-    padding: 20px;
-    font-family: Arial, sans-serif;
+    max-width: 600px; /* Adjust as needed */
+    margin: auto; /* Center the container */
+    padding: 20px; /* Add some padding */
+    border: 1px solid #ccc; /* Optional: Add border */
+    border-radius: 10px; /* Optional: Add border radius */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
+    background-color: #f9f9f9; /* Optional: Add background color */
 }
 
 .item-input {
-    margin-bottom: 10px;
+    display: flex; /* Use flexbox to arrange items */
+    justify-content: space-between; /* Space between inputs */
+    margin-bottom: 10px; /* Space between item inputs */
 }
 
 .item-input input {
-    margin-right: 10px;
-    padding: 5px;
+    flex: 1; /* Allow inputs to grow and fill space */
+    margin-right: 10px; /* Space between inputs */
+}
+
+.item-input input:last-child {
+    margin-right: 0; /* Remove margin for the last input */
 }
 
 button {
-    margin-right: 10px;
-    padding: 5px 10px;
-    cursor: pointer;
+    margin: 10px; /* Add margin around buttons */
+    padding: 10px 20px; /* Increase padding for better appearance */
+    background-color: #007bff; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Add border radius */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: background-color 0.3s; /* Smooth background transition */
 }
 
-h2 {
-    margin-top: 20px;
-}
-
-h3 {
-    margin-top: 30px;
-}
-
-.item-list {
-    list-style-type: none;
-    padding: 0;
-}
-
-.item-list li {
-    margin: 5px 0;
+button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
 }

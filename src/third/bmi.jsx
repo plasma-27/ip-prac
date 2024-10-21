@@ -22,6 +22,21 @@ const BmiCalculator = () => {
         setCategory(data.category);
     };
 
+    const getCategoryClass = () => {
+        switch (category) {
+            case 'Underweight':
+                return 'underweight';
+            case 'Normal weight':
+                return 'normal';
+            case 'Overweight':
+                return 'overweight';
+            case 'Obesity':
+                return 'obese';
+            default:
+                return '';
+        }
+    };
+
     return (
         <div className="bmi-container">
             <h1>BMI Calculator</h1>
@@ -49,7 +64,7 @@ const BmiCalculator = () => {
             {bmi && (
                 <div className="bmi-result">
                     <h2>Your BMI: {bmi.toFixed(2)}</h2>
-                    <h3>Health Category: {category}</h3>
+                    <h3 className={getCategoryClass()}>Health Category: {category}</h3>
                 </div>
             )}
         </div>
